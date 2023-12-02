@@ -1,5 +1,5 @@
 use anyhow::{bail, Context, Result};
-use aoc::day_1_puzzle_1;
+use aoc::day_1;
 use clap::Parser;
 use log::{debug, error};
 
@@ -41,7 +41,7 @@ fn main() -> Result<()> {
 
     match cli.day {
         1 => match cli.puzzle {
-            1 => println!("{}", day_1_puzzle_1(input.lines())?),
+            1 => println!("{}", day_1::puzzle_1::solve(input.lines())?),
             _ => bail!("Unknown puzzle `{}`", cli.puzzle)
         },
         _ => bail!("Unknown day `{}`", cli.day)
