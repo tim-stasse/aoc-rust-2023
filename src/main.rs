@@ -47,6 +47,7 @@ fn main() -> Result<()> {
         },
         2 => match cli.puzzle {
             1 => println!("{}", day_2::puzzle_1::solve(input.lines())?),
+            2 => println!("{}", day_2::puzzle_2::solve(input.lines())?),
             _ => bail!("Unknown puzzle `{}`", cli.puzzle)
         },
         _ => bail!("Unknown day `{}`", cli.day)
