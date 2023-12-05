@@ -4,7 +4,7 @@ use predicates::prelude::*; // Used for writing assertions
 use std::process::Command; // Run programs
 
 #[test]
-fn solve_puzzle_2() -> Result<(), Box<dyn std::error::Error>> {
+fn solve_puzzle_1() -> Result<(), Box<dyn std::error::Error>> {
     let input_file = assert_fs::NamedTempFile::new("input.txt")?;
     input_file.write_str(
         vec!(
