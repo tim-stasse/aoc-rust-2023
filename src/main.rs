@@ -8,7 +8,7 @@ struct Cli {
     /// The advent day
     #[arg(short, long)]
     day: u8,
-    /// The advent day
+    /// The puzzle of the day
     #[arg(short, long)]
     puzzle: u8,
     /// The path to the input file
