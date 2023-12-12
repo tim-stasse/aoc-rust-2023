@@ -4,9 +4,9 @@ use anyhow::{anyhow, bail, Context, Result};
 
 #[derive(Debug, PartialEq)]
 pub struct Scratchcard {
-    id: u32,
-    winning_numbers: Vec<u32>,
-    numbers_you_have: Vec<u32>
+    pub id: u32,
+    pub winning_numbers: Vec<u32>,
+    pub numbers_you_have: Vec<u32>
 }
 
 impl Scratchcard {
@@ -49,14 +49,17 @@ impl Scratchcard {
         Self { id, winning_numbers, numbers_you_have }
     }
 
-    pub fn get_points(&self) -> Result<u32> {
-        let base: u32 = 2;
-        let exp = self.numbers_you_have
+    pub fn get_matching_numbers(&self) -> Vec<u32> {
+        self.numbers_you_have
             .iter()
             .filter(|number_you_have| self.winning_numbers.contains(number_you_have))
+            .copied()
             .collect::<Vec<_>>()
-            .len()
-            .try_into()?;
+    }
+
+    pub fn get_points(&self) -> Result<u32> {
+        let base: u32 = 2;
+        let exp = self.get_matching_numbers().len().try_into()?;
 
         Ok(base.pow(exp) / base)
     }
